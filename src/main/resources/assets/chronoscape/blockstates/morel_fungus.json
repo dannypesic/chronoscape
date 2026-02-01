@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "age=0": { "model": "chronoscape:block/morel_fungus_stage0" },
+    "age=1": { "model": "chronoscape:block/morel_fungus_stage1" }
+  }
+}

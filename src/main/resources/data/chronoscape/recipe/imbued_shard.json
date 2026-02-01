@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["LLL", "LAL", "LLL"],
+  "key": {
+    "L": "minecraft:lapis_lazuli",
+    "A": "minecraft:amethyst_shard"
+  },
+  "result": {
+    "id": "chronoscape:imbued_shard",
+    "count": 1
+  }
+}

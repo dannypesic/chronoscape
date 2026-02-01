@@ -1,0 +1,15 @@
+{
+  "itemGroup.chronoscape": "Chronoscape",
+  "item.chronoscape.imbued_shard": "Imbued Shard",
+  "item.chronoscape.blewit": "Blewit",
+  "item.chronoscape.morel": "Morel",
+  "item.chronoscape.jack_o_lantern_mushroom": "Jack o'Lantern Mushroom",
+
+  "chronoscape.configuration.title": "chronoscape Configs",
+  "chronoscape.configuration.section.chronoscape.common.toml": "chronoscape Configs",
+  "chronoscape.configuration.section.chronoscape.common.toml.title": "chronoscape Configs",
+  "chronoscape.configuration.items": "Item List",
+  "chronoscape.configuration.logDirtBlock": "Log Dirt Block",
+  "chronoscape.configuration.magicNumberIntroduction": "Magic Number Text",
+  "chronoscape.configuration.magicNumber": "Magic Number"
+}

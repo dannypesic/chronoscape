@@ -70,4 +70,10 @@ public class ModItems {
             new Item.Properties()
     );
 
+    public static final DeferredItem<BlockItem> FUNGAL_CONDUIT_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
+            "fungal_conduit",
+            ModBlocks.FUNGAL_CONDUIT,
+            new Item.Properties()
+    );
+
 }

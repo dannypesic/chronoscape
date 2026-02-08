@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=west": {
+      "model": "chronoscape:block/fungal_conduit",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "chronoscape:block/fungal_conduit"
+    },
+
+    "facing=north": {
+      "model": "chronoscape:block/fungal_conduit",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "chronoscape:block/fungal_conduit",
+      "y": 270
+    }
+  }
+}

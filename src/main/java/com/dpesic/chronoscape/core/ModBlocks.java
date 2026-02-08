@@ -1,9 +1,6 @@
 package com.dpesic.chronoscape.core;
 
-import com.dpesic.chronoscape.block.BlewitFungusBlock;
-import com.dpesic.chronoscape.block.JackOLanternFungusBlock;
-import com.dpesic.chronoscape.block.MorelFungusBlock;
-import com.dpesic.chronoscape.block.NecroshroomFungusBlock;
+import com.dpesic.chronoscape.block.*;
 
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -61,6 +58,17 @@ public class ModBlocks {
                     .randomTicks()
                     .instabreak()
                     .sound(SoundType.ROOTS)
+    );
+
+    @SuppressWarnings("removal")
+    public static final DeferredBlock<FungalConduitBlock> FUNGAL_CONDUIT = BLOCKS.registerBlock(
+            "fungal_conduit",
+            FungalConduitBlock::new,
+            BlockBehaviour.Properties.of()
+                    .sound(SoundType.SCULK_SENSOR)
+                    .destroyTime(0.2f)
+                    .explosionResistance(0.5f)
+
     );
 
     @SuppressWarnings("removal")

@@ -23,6 +23,9 @@ public class Chronoscape {
         modBus.addListener(Chronoscape::addCreative);
     }
 
+
+
+
     private static void addCreative(BuildCreativeModeTabContentsEvent event) {
 
         // Ingredients tab
@@ -77,6 +80,11 @@ public class Chronoscape {
             event.insertAfter(
                     new ItemStack(ModItems.FUNGAL_SUBSTRATE_BLOCK_ITEM.get()),
                     new ItemStack(ModItems.ROTWOOD_BLOCK_ITEM.get()),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                    new ItemStack(ModItems.ROTWOOD_BLOCK_ITEM.get()),
+                    new ItemStack(ModItems.FUNGAL_CONDUIT_BLOCK_ITEM.get()),
                     CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
             );
 

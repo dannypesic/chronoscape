@@ -9,6 +9,7 @@
 
   "block.chronoscape.fungal_substrate": "Fungal Substrate",
   "block.chronoscape.rotwood": "Rotwood",
+  "block.chronoscape.fungal_conduit": "Fungal Conduit",
 
   "chronoscape.configuration.title": "chronoscape Configs",
   "chronoscape.configuration.section.chronoscape.common.toml": "chronoscape Configs",

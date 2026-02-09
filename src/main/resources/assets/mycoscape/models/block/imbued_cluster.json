@@ -2,6 +2,6 @@
   "parent": "minecraft:block/cross",
   "render_type": "cutout",
   "textures": {
-    "cross": "mycoscape:block/blewit_fungus_stage0"
+    "cross": "mycoscape:block/imbued_cluster"
   }
 }

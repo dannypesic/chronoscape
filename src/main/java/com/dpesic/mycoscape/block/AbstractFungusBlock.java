@@ -28,7 +28,6 @@ public abstract class AbstractFungusBlock extends BushBlock { // BushBlock exten
     public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 1);
     public AbstractFungusBlock(Properties props) {
         super(props);
-        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
     }
 
     protected abstract ItemStack dropItemstack(); // return new ItemStack(ModItems.MY_ITEM.get(), dropCount);

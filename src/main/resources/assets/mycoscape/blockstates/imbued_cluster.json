@@ -1,5 +1,30 @@
 {
   "variants": {
-    "": { "model": "mycoscape:block/fungal_substrate" }
+    "facing=down": {
+      "model": "mycoscape:block/imbued_cluster",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "mycoscape:block/imbued_cluster",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "mycoscape:block/imbued_cluster",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "mycoscape:block/imbued_cluster",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "mycoscape:block/imbued_cluster"
+    },
+    "facing=west": {
+      "model": "mycoscape:block/imbued_cluster",
+      "x": 90,
+      "y": 270
+    }
   }
 }

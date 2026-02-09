@@ -50,7 +50,7 @@ public class Mycoscape {
 
             event.insertAfter(
                     new ItemStack(Items.WARPED_FUNGUS),
-                     new ItemStack(ModItems.BLEWIT.get()),
+                    new ItemStack(ModItems.BLEWIT.get()),
                     CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
             );
 

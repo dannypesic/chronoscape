@@ -10,6 +10,7 @@
   "block.mycoscape.fungal_substrate": "Fungal Substrate",
   "block.mycoscape.rotwood": "Rotwood",
   "block.mycoscape.fungal_conduit": "Fungal Conduit",
+  "block.mycoscape.imbued_cluster": "Imbued Cluster",
 
   "mycoscape.configuration.title": "mycoscape Configs",
   "mycoscape.configuration.section.mycoscape.common.toml": "mycoscape Configs",

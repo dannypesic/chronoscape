@@ -11,6 +11,7 @@ public class MycoscapeBlockTags {
 
     public static final TagKey<Block> FUNGI_GROUND = mycoscapeTag("fungi_ground");
     public static final TagKey<Block> ROTWOOD = mycoscapeTag("rotwood");
+    public static final TagKey<Block> IMBUED_CLUSTER = mycoscapeTag("imbued_cluster");
 
     private MycoscapeBlockTags() {
     }

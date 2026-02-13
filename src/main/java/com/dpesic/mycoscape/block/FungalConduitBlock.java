@@ -1,11 +1,14 @@
 package com.dpesic.mycoscape.block;
 
 import com.dpesic.mycoscape.core.ModBlocks;
+import com.dpesic.mycoscape.tags.MycoscapeBlockTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -22,6 +25,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -53,9 +57,10 @@ public class FungalConduitBlock extends Block{
         }
     }
 
-    private BlockPos findRandomLog(
+    private BlockPos findRandomBlock(
             BlockPos blockPos,
             Level level,
+            TagKey<Block> blockTag,
             int xRadius,
             int yRadius,
             int zRadius
@@ -70,7 +75,7 @@ public class FungalConduitBlock extends Block{
                     BlockPos checkPos = blockPos.offset(x, y, z);
                     BlockState state = level.getBlockState(checkPos);
 
-                    if (state.is(BlockTags.LOGS)) {
+                    if (state.is(blockTag)) {
                         found++;
 
                         // 1 / found chance to replace
@@ -82,30 +87,43 @@ public class FungalConduitBlock extends Block{
             }
         }
 
-        return chosen; // null if no logs found
+        return chosen; // null if no blocks found
     }
 
+    @Override
+    public boolean isRandomlyTicking(BlockState state) {
+        return true;
+    }
 
-    public InteractionResult useItemOn(ItemStack held, BlockState state, Level level, BlockPos pos, //change to randomtick
-                                       Player player, InteractionHand hand, BlockHitResult hit) {
+    @Override
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource rand) {
         int signal = getInputSignal(level, pos, state);
 
-        // custom signal behavior
-        if (signal == 1) {
-            if (!level.isClientSide()) {
-                BlockPos woodPos = findRandomLog(pos, level, 5, 5, 5);
-                if (woodPos != null) {
-                    level.playSound(null, woodPos, SoundEvents.CREAKING_AMBIENT, SoundSource.BLOCKS, 1.0F, 0.6F + level.random.nextFloat() * 0.2F);
-                    level.setBlock(woodPos, ModBlocks.ROTWOOD.get().withPropertiesOf(level.getBlockState(woodPos)), 3);
-                }
-            }
+        if (rand.nextInt(5) == 0) {
 
-            return InteractionResult.SUCCESS;
+            // custom signal behavior
+            if (signal == 15) {
+                if (!level.isClientSide()) {
+                    BlockPos woodPos = findRandomBlock(pos, level, BlockTags.LOGS, 5, 5, 5);
+                    if (woodPos != null) {
+                        level.playSound(null, woodPos, SoundEvents.CREAKING_AMBIENT, SoundSource.BLOCKS, 1.0F, 0.6F + level.random.nextFloat() * 0.2F);
+                        level.setBlock(woodPos, ModBlocks.ROTWOOD.get().withPropertiesOf(level.getBlockState(woodPos)), 3);
+                    }
+                }
+
+            }
+            if (signal < 15 && signal != 0) {
+                if (!level.isClientSide()) {
+                    BlockPos clusterPos = findRandomBlock(pos, level, MycoscapeBlockTags.IMBUED_CLUSTER, 5, 5, 5);
+                    if (clusterPos != null) {
+                        level.playSound(null, clusterPos, SoundEvents.BELL_RESONATE, SoundSource.BLOCKS, 1.0F, 0.6F + level.random.nextFloat() * 0.3F);
+                        level.setBlock(clusterPos, ModBlocks.DEPLETED_CLUSTER.get().withPropertiesOf(level.getBlockState(clusterPos)), 3);
+                    }
+                }
+
+            }
         }
 
-
-
-        return InteractionResult.PASS;
     }
 
     @Override

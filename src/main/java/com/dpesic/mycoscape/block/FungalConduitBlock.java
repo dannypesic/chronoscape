@@ -25,8 +25,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.level.redstone.Orientation;
@@ -35,10 +34,12 @@ import org.jspecify.annotations.Nullable;
 public class FungalConduitBlock extends Block{
     private static final VoxelShape SHAPE;
     public static final EnumProperty<Direction> FACING;
+    public static final IntegerProperty POWER = BlockStateProperties.POWER;
+
 
     public FungalConduitBlock(final BlockBehaviour.Properties properties) {
         super(properties);
-        this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH));
+        this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(POWER,0));
     }
 
     public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
@@ -128,12 +129,27 @@ public class FungalConduitBlock extends Block{
 
     @Override
     protected void neighborChanged(final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston) {
-        //do stuff on signal strength change
+        int current = getInputSignal(level, pos, state);
+        int previous = state.getValue(POWER);
+
+        if (current != previous) {
+
+            if (current == 15) {
+                level.playSound(null, pos, SoundEvents.BEACON_ACTIVATE, SoundSource.BLOCKS, 1.5F, 0.8F);
+            }
+
+            if (current < 15 && current > 0 && previous == 0) {
+                level.playSound(null, pos, SoundEvents.BEACON_DEACTIVATE, SoundSource.BLOCKS, 1.5F, 0.8F);
+            }
+
+            level.setBlock(pos, state.setValue(POWER, current), 3);
+        }
+
     }
 
     protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
-        builder.add(FACING);
+        builder.add(FACING, POWER);
     }
 
     protected boolean useShapeForLightOcclusion(final BlockState state) {

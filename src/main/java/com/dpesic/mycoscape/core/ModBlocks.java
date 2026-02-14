@@ -62,7 +62,7 @@ public class ModBlocks {
             "fungal_conduit",
             FungalConduitBlock::new,
             BlockBehaviour.Properties.of()
-                    .sound(SoundType.SCULK_SENSOR)
+                    .sound(SoundType.ANCIENT_DEBRIS)
                     .destroyTime(0.2f)
                     .explosionResistance(0.5f)
 

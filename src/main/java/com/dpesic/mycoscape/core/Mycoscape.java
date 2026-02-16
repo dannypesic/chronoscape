@@ -20,6 +20,7 @@ public class Mycoscape {
         this.modBus = modBus;
         ModItems.ITEMS.register(modBus);
         ModBlocks.BLOCKS.register(modBus);
+        ModBlockEntityTypes.BLOCK_ENTITY_TYPES.register(modBus);
         modBus.addListener(Mycoscape::addCreative);
     }
 

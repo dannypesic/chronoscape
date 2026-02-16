@@ -15,7 +15,7 @@ public class BlewitFungusBlock extends AbstractFungusBlock {
     @Override
     protected ItemStack dropItemstack() {
         int dropCount = 1;
-        return new ItemStack(ModItems.MOREL.get(), dropCount);
+        return new ItemStack(ModItems.BLEWIT.get(), dropCount);
     }
 
     @Override

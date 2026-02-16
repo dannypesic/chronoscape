@@ -96,4 +96,10 @@ public class ModItems {
             new Item.Properties()
     );
 
+    @SuppressWarnings("removal")
+    public static final DeferredItem<BlockItem> BIOGENERATOR_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
+            "biogenerator",
+            ModBlocks.BIOGENERATOR,
+            new Item.Properties()
+    );
 }

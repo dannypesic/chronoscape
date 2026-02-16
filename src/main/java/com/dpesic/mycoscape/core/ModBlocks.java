@@ -2,6 +2,8 @@ package com.dpesic.mycoscape.core;
 
 import com.dpesic.mycoscape.block.*;
 
+//import com.dpesic.mycoscape.block.machine.BiogeneratorBlock;
+import com.dpesic.mycoscape.block.machine.BiogeneratorBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -109,5 +111,13 @@ public class ModBlocks {
                     .destroyTime(0.5f)
                     .explosionResistance(0.5f)
     );
+
+    public static final DeferredBlock<BiogeneratorBlock> BIOGENERATOR =
+            BLOCKS.registerBlock("biogenerator",
+                    BiogeneratorBlock::new,
+                    BlockBehaviour.Properties.of()
+                    .sound(SoundType.MUDDY_MANGROVE_ROOTS)
+                    .destroyTime(0.5f)
+                    .explosionResistance(0.5f));
 
 };

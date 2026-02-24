@@ -8,6 +8,12 @@
   "item.mycoscape.necroshroom": "Necroshroom",
   "item.mycoscape.enriched_alloy": "Enriched Alloy",
 
+  "item.mycoscape.fungal_substrate": "Fungal Substrate",
+  "item.mycoscape.rotwood": "Rotwood",
+  "item.mycoscape.fungal_conduit": "Fungal Conduit",
+  "item.mycoscape.imbued_cluster": "Imbued Cluster",
+  "item.mycoscape.depleted_cluster": "Depleted Cluster",
+
   "block.mycoscape.fungal_substrate": "Fungal Substrate",
   "block.mycoscape.rotwood": "Rotwood",
   "block.mycoscape.fungal_conduit": "Fungal Conduit",

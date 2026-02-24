@@ -5,101 +5,95 @@ import com.dpesic.mycoscape.item.JackOLanternMushroomItem;
 import com.dpesic.mycoscape.item.MorelItem;
 import com.dpesic.mycoscape.item.NecroshroomItem;
 
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.neoforged.neoforge.registries.DeferredItem;
+import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.function.Supplier;
 
 public class ModItems {
     private ModItems() {}
 
 
-    public static final DeferredRegister.Items ITEMS =
-            DeferredRegister.createItems(Mycoscape.MODID);
+    public static final DeferredRegister<Item> ITEMS =
+            DeferredRegister.create(Registries.ITEM, Mycoscape.MODID);
 
+    public static <T extends Block> DeferredHolder<Item, BlockItem> registerBlockItem(String name, DeferredHolder<Block, T> block) {
+        return ITEMS.register(
+                name,
+                registryName -> new BlockItem(
+                        block.get(),
+                        new Item.Properties()
+                                .setId(ResourceKey.create(Registries.ITEM, registryName))
+                )
+        );
+    }
 
-
-    public static final DeferredItem<Item> IMBUED_SHARD = ITEMS.registerSimpleItem(
-            "imbued_shard"
+    public static final DeferredHolder<Item, Item> IMBUED_SHARD = ITEMS.register(
+            "imbued_shard",
+            registryName -> new Item(new Item.Properties()
+                    .setId(ResourceKey.create(Registries.ITEM, registryName))
+            )
     );
 
-    public static final DeferredItem<Item> DEPLETED_SHARD = ITEMS.registerSimpleItem(
-            "depleted_shard"
+    public static final DeferredHolder<Item, Item> DEPLETED_SHARD = ITEMS.register(
+            "depleted_shard",
+            registryName -> new Item(new Item.Properties()
+                    .setId(ResourceKey.create(Registries.ITEM, registryName))
+            )
     );
 
-    public static final DeferredItem<Item> ENRICHED_ALLOY = ITEMS.registerSimpleItem(
-            "enriched_alloy"
+
+    public static final DeferredHolder<Item, Item> ENRICHED_ALLOY = ITEMS.register(
+            "enriched_alloy",
+            registryName -> new Item(new Item.Properties()
+                    .setId(ResourceKey.create(Registries.ITEM, registryName))
+            )
     );
 
-    @SuppressWarnings("removal")
-    public static final DeferredItem<BlewitItem> BLEWIT = ITEMS.registerItem(
+    public static final DeferredHolder<Item, BlewitItem> BLEWIT = ITEMS.register(
             "blewit",
-            BlewitItem::new,
-            new Item.Properties()
+            registryName -> new BlewitItem(new Item.Properties()
+                    .setId(ResourceKey.create(Registries.ITEM, registryName))
+            )
     );
 
-    @SuppressWarnings("removal")
-    public static final DeferredItem<MorelItem> MOREL = ITEMS.registerItem(
+    public static final DeferredHolder<Item, MorelItem> MOREL = ITEMS.register(
             "morel",
-            MorelItem::new,
-            new Item.Properties()
+            registryName -> new MorelItem(new Item.Properties()
+                    .setId(ResourceKey.create(Registries.ITEM, registryName))
+            )
     );
 
-    @SuppressWarnings("removal")
-    public static final DeferredItem<JackOLanternMushroomItem> JACK_O_LANTERN_MUSHROOM = ITEMS.registerItem(
+    public static final DeferredHolder<Item, JackOLanternMushroomItem> JACK_O_LANTERN_MUSHROOM = ITEMS.register(
             "jack_o_lantern_mushroom",
-            JackOLanternMushroomItem::new,
-            new Item.Properties()
+            registryName -> new JackOLanternMushroomItem( new Item.Properties()
+                    .setId(ResourceKey.create(Registries.ITEM, registryName))
+            )
     );
 
-    @SuppressWarnings("removal")
-    public static final DeferredItem<NecroshroomItem> NECROSHROOM = ITEMS.registerItem(
+    public static final DeferredHolder<Item, NecroshroomItem> NECROSHROOM = ITEMS.register(
             "necroshroom",
-            NecroshroomItem::new,
-            new Item.Properties()
+            registryName -> new NecroshroomItem(new Item.Properties()
+                    .setId(ResourceKey.create(Registries.ITEM, registryName))
+            )
     );
 
+    //Block Items
+    public static final DeferredHolder<Item, BlockItem> FUNGAL_SUBSTRATE_BLOCK_ITEM = registerBlockItem("fungal_substrate", ModBlocks.FUNGAL_SUBSTRATE);
 
-    // Block Items
-    @SuppressWarnings("removal")
-    public static final DeferredItem<BlockItem> FUNGAL_SUBSTRATE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
-            "fungal_substrate",
-            ModBlocks.FUNGAL_SUBSTRATE,
-            new Item.Properties()
-    );
+    public static final DeferredHolder<Item, BlockItem> ROTWOOD_BLOCK_ITEM = registerBlockItem("rotwood", ModBlocks.ROTWOOD);
 
-    @SuppressWarnings("removal")
-    public static final DeferredItem<BlockItem> ROTWOOD_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
-            "rotwood",
-            ModBlocks.ROTWOOD,
-            new Item.Properties()
-    );
+    public static final DeferredHolder<Item, BlockItem> FUNGAL_CONDUIT_BLOCK_ITEM = registerBlockItem("fungal_conduit", ModBlocks.FUNGAL_CONDUIT);
 
-    @SuppressWarnings("removal")
-    public static final DeferredItem<BlockItem> FUNGAL_CONDUIT_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
-            "fungal_conduit",
-            ModBlocks.FUNGAL_CONDUIT,
-            new Item.Properties()
-    );
+    public static final DeferredHolder<Item, BlockItem> IMBUED_CLUSTER_BLOCK_ITEM = registerBlockItem("imbued_cluster", ModBlocks.IMBUED_CLUSTER);
 
-    @SuppressWarnings("removal")
-    public static final DeferredItem<BlockItem> IMBUED_CLUSTER_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
-            "imbued_cluster",
-            ModBlocks.IMBUED_CLUSTER,
-            new Item.Properties()
-    );
+    public static final DeferredHolder<Item, BlockItem> DEPLETED_CLUSTER_BLOCK_ITEM = registerBlockItem("depleted_cluster", ModBlocks.DEPLETED_CLUSTER);
 
-    @SuppressWarnings("removal")
-    public static final DeferredItem<BlockItem> DEPLETED_CLUSTER_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
-            "depleted_cluster",
-            ModBlocks.DEPLETED_CLUSTER,
-            new Item.Properties()
-    );
+    public static final DeferredHolder<Item, BlockItem> BIOGENERATOR_BLOCK_ITEM = registerBlockItem("biogenerator", ModBlocks.BIOGENERATOR);
 
-    @SuppressWarnings("removal")
-    public static final DeferredItem<BlockItem> BIOGENERATOR_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
-            "biogenerator",
-            ModBlocks.BIOGENERATOR,
-            new Item.Properties()
-    );
 }

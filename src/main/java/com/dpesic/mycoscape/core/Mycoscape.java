@@ -1,12 +1,16 @@
 package com.dpesic.mycoscape.core;
 
+import com.dpesic.mycoscape.client.ClientModEvents;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
+
 
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
@@ -21,7 +25,9 @@ public class Mycoscape {
         ModItems.ITEMS.register(modBus);
         ModBlocks.BLOCKS.register(modBus);
         ModBlockEntityTypes.BLOCK_ENTITY_TYPES.register(modBus);
+        ModMenuTypes.MENU_TYPES.register(modBus);
         modBus.addListener(Mycoscape::addCreative);
+
     }
 
 

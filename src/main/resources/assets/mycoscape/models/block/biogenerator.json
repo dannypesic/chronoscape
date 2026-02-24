@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "mycoscape:block/biogenerator_front",
+    "side": "mycoscape:block/biogenerator_side",
+    "top": "mycoscape:block/biogenerator_side"
+  }
+}

@@ -102,7 +102,7 @@ public class FungalConduitBlock extends Block{
 
         if (rand.nextInt(5) == 0) {
 
-            // custom signal behavior
+            // custom signal behavior             level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(state));
             if (signal == 15) {
                 if (!level.isClientSide()) {
                     BlockPos woodPos = findRandomBlock(pos, level, BlockTags.LOGS, 5, 5, 5);

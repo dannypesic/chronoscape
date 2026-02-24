@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "mycoscape:block/biogenerator",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "mycoscape:block/biogenerator"
+    },
+    "facing=south": {
+      "model": "mycoscape:block/biogenerator",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mycoscape:block/biogenerator",
+      "y": 270
+    }
+  }
+}

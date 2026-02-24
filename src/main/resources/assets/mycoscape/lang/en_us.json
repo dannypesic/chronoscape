@@ -13,6 +13,9 @@
   "block.mycoscape.fungal_conduit": "Fungal Conduit",
   "block.mycoscape.imbued_cluster": "Imbued Cluster",
   "block.mycoscape.depleted_cluster": "Depleted Cluster",
+  "block.mycoscape.biogenerator": "Biogenerator",
+
+  "container.biogenerator": "Biogenerator",
 
   "mycoscape.configuration.title": "mycoscape Configs",
   "mycoscape.configuration.section.mycoscape.common.toml": "mycoscape Configs",

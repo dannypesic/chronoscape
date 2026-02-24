@@ -11,16 +11,27 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.function.Supplier;
 
 public class ModItems {
     private ModItems() {}
 
+
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(Registries.ITEM, Mycoscape.MODID);
 
-
+    public static <T extends Block> DeferredHolder<Item, BlockItem> registerBlockItem(String name, DeferredHolder<Block, T> block) {
+        return ITEMS.register(
+                name,
+                registryName -> new BlockItem(
+                        block.get(),
+                        new Item.Properties()
+                                .setId(ResourceKey.create(Registries.ITEM, registryName))
+                )
+        );
+    }
 
     public static final DeferredHolder<Item, Item> IMBUED_SHARD = ITEMS.register(
             "imbued_shard",
@@ -73,49 +84,15 @@ public class ModItems {
     );
 
     //Block Items
-    public static final DeferredHolder<Item, BlockItem> FUNGAL_SUBSTRATE_BLOCK_ITEM = ITEMS.register(
-            "fungal_substrate",
-            registryName -> new BlockItem(
-                    ModBlocks.FUNGAL_SUBSTRATE.get(),
-                    new Item.Properties()
-                        .setId(ResourceKey.create(Registries.ITEM, registryName))
-            )
-    );
+    public static final DeferredHolder<Item, BlockItem> FUNGAL_SUBSTRATE_BLOCK_ITEM = registerBlockItem("fungal_substrate", ModBlocks.FUNGAL_SUBSTRATE);
 
-    public static final DeferredHolder<Item, BlockItem> ROTWOOD_BLOCK_ITEM = ITEMS.register(
-            "rotwood",
-            registryName -> new BlockItem(
-                    ModBlocks.ROTWOOD.get(),
-                    new Item.Properties()
-                            .setId(ResourceKey.create(Registries.ITEM, registryName))
-            )
-    );
+    public static final DeferredHolder<Item, BlockItem> ROTWOOD_BLOCK_ITEM = registerBlockItem("rotwood", ModBlocks.ROTWOOD);
 
-    public static final DeferredHolder<Item, BlockItem> FUNGAL_CONDUIT_BLOCK_ITEM = ITEMS.register(
-            "fungal_conduit",
-            registryName -> new BlockItem(
-                    ModBlocks.FUNGAL_CONDUIT.get(),
-                    new Item.Properties()
-                            .setId(ResourceKey.create(Registries.ITEM, registryName))
-            )
-    );
+    public static final DeferredHolder<Item, BlockItem> FUNGAL_CONDUIT_BLOCK_ITEM = registerBlockItem("fungal_conduit", ModBlocks.FUNGAL_CONDUIT);
 
-    public static final DeferredHolder<Item, BlockItem> IMBUED_CLUSTER_BLOCK_ITEM = ITEMS.register(
-            "imbued_cluster",
-            registryName -> new BlockItem(
-                    ModBlocks.IMBUED_CLUSTER.get(),
-                    new Item.Properties()
-                            .setId(ResourceKey.create(Registries.ITEM, registryName))
-            )
-    );
+    public static final DeferredHolder<Item, BlockItem> IMBUED_CLUSTER_BLOCK_ITEM = registerBlockItem("imbued_cluster", ModBlocks.IMBUED_CLUSTER);
 
-    public static final DeferredHolder<Item, BlockItem> DEPLETED_CLUSTER_BLOCK_ITEM = ITEMS.register(
-            "depleted_cluster",
-            registryName -> new BlockItem(
-                    ModBlocks.DEPLETED_CLUSTER.get(),
-                    new Item.Properties()
-                            .setId(ResourceKey.create(Registries.ITEM, registryName))
-            )
-    );
+    public static final DeferredHolder<Item, BlockItem> DEPLETED_CLUSTER_BLOCK_ITEM = registerBlockItem("depleted_cluster", ModBlocks.DEPLETED_CLUSTER);
+
 
 }

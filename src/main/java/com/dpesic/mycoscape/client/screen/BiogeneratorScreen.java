@@ -3,7 +3,7 @@ package com.dpesic.mycoscape.client.screen;
 import com.dpesic.mycoscape.inventory.BiogeneratorMenu;
 import com.dpesic.mycoscape.client.screen.widget.TextureButton;
 
-import com.dpesic.mycoscape.network.ToggleBiogeneratorPacket;
+import com.dpesic.mycoscape.network.machine.BiogeneratorTogglePacket;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.RenderPipelines;
@@ -42,7 +42,7 @@ public class BiogeneratorScreen extends AbstractContainerScreen<BiogeneratorMenu
                 BTN_TEX,
                 () -> {
                     ClientPacketDistributor.sendToServer(
-                            new ToggleBiogeneratorPacket(menu.getBlockPos())
+                            new BiogeneratorTogglePacket(menu.getBlockPos())
                     );
                 },
                 () -> menu.isToggled() ? 0 : 1   // ContainerData-driven mode, example

@@ -24,11 +24,18 @@ public record ToggleBiogeneratorPacket(BlockPos pos) implements CustomPacketPayl
         return TYPE;
     }
 
+    //   STREAM_CODEC,
+//                (packet, context) -> context.enqueueWork(() -> {
+//                    var player = context.player();
+//                    var level = player.level();
+//
+//                    var be = level.getBlockEntity(packet.pos());
+
     public static void register(PayloadRegistrar registrar) {
         registrar.playToServer(
                 TYPE,
                 STREAM_CODEC,
-                (packet, context) -> {
+                (packet, context) -> context.enqueueWork(()-> {
 
                     var player = context.player();
                     var level = player.level();
@@ -41,6 +48,7 @@ public record ToggleBiogeneratorPacket(BlockPos pos) implements CustomPacketPayl
                         machine.setChanged();
                     }
                 }
+                )
         );
     }
 }

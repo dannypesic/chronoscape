@@ -1,6 +1,7 @@
 package com.dpesic.mycoscape.inventory;
 
 import com.dpesic.mycoscape.block.entity.AbstractMachineBlockEntity;
+import com.dpesic.mycoscape.block.entity.BiogeneratorBlockEntity;
 import com.dpesic.mycoscape.core.ModMenuTypes;
 
 import com.dpesic.mycoscape.tags.MycoscapeItemTags;
@@ -19,7 +20,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 public class BiogeneratorMenu extends AbstractContainerMenu {
     private final Container container;
     protected final Level level;
-    private final AbstractMachineBlockEntity be;
+    private final BiogeneratorBlockEntity be;
     private final ContainerData data;
     private final BlockPos pos;
 
@@ -27,7 +28,7 @@ public class BiogeneratorMenu extends AbstractContainerMenu {
         this(containerId, playerInv, getBE(playerInv, buf), new SimpleContainerData(3));
     }
 
-    public BiogeneratorMenu(int containerId, Inventory playerInv, AbstractMachineBlockEntity be, ContainerData data) {
+    public BiogeneratorMenu(int containerId, Inventory playerInv, BiogeneratorBlockEntity be, ContainerData data) {
         super(ModMenuTypes.BIOGENERATOR_MENU.get(), containerId);
         this.be = be;
         this.pos = be.getBlockPos();
@@ -42,11 +43,11 @@ public class BiogeneratorMenu extends AbstractContainerMenu {
         this.addDataSlots(data);
     }
 
-    private static AbstractMachineBlockEntity getBE(Inventory playerInv, FriendlyByteBuf buf) {
+    private static BiogeneratorBlockEntity getBE(Inventory playerInv, FriendlyByteBuf buf) {
         BlockPos pos = buf.readBlockPos();
         BlockEntity e = playerInv.player.level().getBlockEntity(pos);
-        if (e instanceof AbstractMachineBlockEntity be) return be;
-        throw new IllegalStateException("Expected AbstractMachineBlockEntity at " + pos + ", got: " + e);
+        if (e instanceof BiogeneratorBlockEntity be) return be;
+        throw new IllegalStateException("Expected BiogeneratorBlockEntity at " + pos + ", got: " + e);
     }
 
     protected boolean isFuel(final ItemStack itemStack) {

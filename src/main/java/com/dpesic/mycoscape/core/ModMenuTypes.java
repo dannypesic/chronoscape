@@ -13,5 +13,6 @@ public class ModMenuTypes {
     public static final DeferredRegister<MenuType<?>> MENU_TYPES =
             DeferredRegister.create(Registries.MENU, Mycoscape.MODID);
 
-    public static final Supplier<MenuType<BiogeneratorMenu>> BIOGENERATOR_MENU = MENU_TYPES.register("biogenerator_menu", () -> IMenuTypeExtension.create(BiogeneratorMenu::new));
+    public static final Supplier<MenuType<BiogeneratorMenu>> BIOGENERATOR_MENU =
+            MENU_TYPES.register("biogenerator_menu", () -> IMenuTypeExtension.create(BiogeneratorMenu::new));
 }

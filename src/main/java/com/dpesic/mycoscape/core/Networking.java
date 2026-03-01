@@ -1,6 +1,7 @@
 package com.dpesic.mycoscape.core;
 
 import com.dpesic.mycoscape.block.entity.AbstractMachineBlockEntity;
+import com.dpesic.mycoscape.network.HasPos;
 import com.dpesic.mycoscape.network.machine.*;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;

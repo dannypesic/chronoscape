@@ -1,4 +1,4 @@
-package com.dpesic.mycoscape.network.machine;
+package com.dpesic.mycoscape.network;
 
 import net.minecraft.core.BlockPos;
 

@@ -1,16 +1,16 @@
 package com.dpesic.mycoscape.sound;
 
-import com.dpesic.mycoscape.block.entity.AbstractMachineBlockEntity;
+import com.dpesic.mycoscape.block.entity.BiogeneratorBlockEntity;
 import net.minecraft.client.resources.sounds.AbstractTickableSoundInstance;
 import net.minecraft.client.resources.sounds.SoundInstance;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 
-public class BioreactorSound extends AbstractTickableSoundInstance {
+public class BiogeneratorSound extends AbstractTickableSoundInstance {
 
-    private final AbstractMachineBlockEntity machine;
+    private final BiogeneratorBlockEntity machine;
 
-    public BioreactorSound(AbstractMachineBlockEntity machine) {
+    public BiogeneratorSound(BiogeneratorBlockEntity machine) {
         super(SoundEvents.BEACON_AMBIENT, SoundSource.BLOCKS, SoundInstance.createUnseededRandom());
         this.machine = machine;
         this.looping = true;

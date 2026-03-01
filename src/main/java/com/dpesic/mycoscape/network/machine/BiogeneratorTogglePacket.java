@@ -1,5 +1,6 @@
 package com.dpesic.mycoscape.network.machine;
 
+import com.dpesic.mycoscape.network.HasPos;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
